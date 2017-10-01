@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "npascal", "npascal/npascal.csproj", "{A5F9A84B-C6EB-4B77-A0B1-2117565D84B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "npascal.frontend", "npascal.frontend\npascal.frontend.csproj", "{E57C3379-E2E9-442C-BBB1-47FDE4DF36E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "npascal.intermediate", "npascal.intermediate\npascal.intermediate.csproj", "{DA7FDCB9-D889-46E1-9054-DA9641E4FBDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "npascal.backend", "npascal.backend\npascal.backend.csproj", "{E824F3F3-C676-48F4-BBA3-C20247D7F58C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5F9A84B-C6EB-4B77-A0B1-2117565D84B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F9A84B-C6EB-4B77-A0B1-2117565D84B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F9A84B-C6EB-4B77-A0B1-2117565D84B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F9A84B-C6EB-4B77-A0B1-2117565D84B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57C3379-E2E9-442C-BBB1-47FDE4DF36E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57C3379-E2E9-442C-BBB1-47FDE4DF36E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57C3379-E2E9-442C-BBB1-47FDE4DF36E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57C3379-E2E9-442C-BBB1-47FDE4DF36E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7FDCB9-D889-46E1-9054-DA9641E4FBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7FDCB9-D889-46E1-9054-DA9641E4FBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7FDCB9-D889-46E1-9054-DA9641E4FBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7FDCB9-D889-46E1-9054-DA9641E4FBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E824F3F3-C676-48F4-BBA3-C20247D7F58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E824F3F3-C676-48F4-BBA3-C20247D7F58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E824F3F3-C676-48F4-BBA3-C20247D7F58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E824F3F3-C676-48F4-BBA3-C20247D7F58C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
