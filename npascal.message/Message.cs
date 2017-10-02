@@ -2,13 +2,13 @@
 {
   public class Message
   {
-    private readonly MessageType _type;
-    private readonly object _body;
+    public MessageType Type { get; }
+    public object Body { get; }
 
     public Message(MessageType type, object body)
     {
-      _type = type;
-      _body = body;
+      Type = type;
+      Body = body;
     }
   }
 }

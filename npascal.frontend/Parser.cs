@@ -5,9 +5,9 @@ namespace npascal.frontend
 {
   public abstract class Parser : IMessageProducer
   {
-    protected static ISymbolTable SymbolTable;
+    public ISymbolTable SymbolTable { get; protected set; }
     protected readonly Scanner Scanner;
-    protected ICode Intermediate;
+    public ICode IntermediateCode { get; protected set; }
     protected static MessageHandler MessageHandler = new MessageHandler();
 
     public Parser(Scanner scanner)

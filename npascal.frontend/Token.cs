@@ -6,7 +6,7 @@
     protected string Text;
     protected object Value;
     protected readonly Source Source;
-    protected int LineNumber;
+    public int LineNumber { get; protected set; }
     protected int Position;
 
     public Token(Source source)
@@ -39,17 +39,6 @@
     protected char PeekChar()
     {
       return Source.PeekChar();
-    }
-  }
-
-  public class EofToken : Token
-  {
-    public EofToken(Source source) : base(source)
-    {
-    }
-
-    protected override void Extract()
-    {
     }
   }
 }
