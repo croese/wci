@@ -2,12 +2,12 @@
 {
   public class Token
   {
-    protected ITokenType Type;
-    protected string Text;
-    protected object Value;
+    public ITokenType Type { get; protected set; }
+    public string Text { get; protected set; }
+    public object Value { get; protected set; }
     protected readonly Source Source;
     public int LineNumber { get; protected set; }
-    protected int Position;
+    public int Position { get; protected set; }
 
     public Token(Source source)
     {
