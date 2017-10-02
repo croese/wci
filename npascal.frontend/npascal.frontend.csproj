@@ -2,4 +2,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\npascal.intermediate\npascal.intermediate.csproj">
+      <Project>{DA7FDCB9-D889-46E1-9054-DA9641E4FBDF}</Project>
+      <Name>npascal.intermediate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\npascal.message\npascal.message.csproj">
+      <Project>{41398C43-8E8D-4F15-9B56-1EB4FA9390A3}</Project>
+      <Name>npascal.message</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
