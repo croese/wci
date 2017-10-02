@@ -2,43 +2,43 @@
 {
   public class Token
   {
-    protected TokenType type;
-    protected string text;
-    protected object value;
-    protected readonly Source source;
-    protected int lineNumber;
-    protected int position;
+    protected ITokenType Type;
+    protected string Text;
+    protected object Value;
+    protected readonly Source Source;
+    protected int LineNumber;
+    protected int Position;
 
     public Token(Source source)
     {
-      this.source = source;
-      lineNumber = source.GetLineNumber();
-      position = source.GetPosition();
+      this.Source = source;
+      LineNumber = source.GetLineNumber();
+      Position = source.GetPosition();
 
       Extract();
     }
 
     protected virtual void Extract()
     {
-      text = CurrentChar().ToString();
-      value = null;
+      Text = CurrentChar().ToString();
+      Value = null;
 
       NextChar();
     }
 
     protected char NextChar()
     {
-      return source.NextChar();
+      return Source.NextChar();
     }
 
     protected char CurrentChar()
     {
-      return source.CurrentChar();
+      return Source.CurrentChar();
     }
 
     protected char PeekChar()
     {
-      return source.PeekChar();
+      return Source.PeekChar();
     }
   }
 

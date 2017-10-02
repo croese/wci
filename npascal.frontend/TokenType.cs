@@ -1,6 +1,6 @@
 ﻿namespace npascal.frontend
 {
-  public interface TokenType
+  public interface ITokenType
   {
     
   }

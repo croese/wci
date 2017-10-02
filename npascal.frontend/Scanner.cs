@@ -2,12 +2,12 @@
 {
   public abstract class Scanner
   {
-    protected readonly Source source;
+    protected readonly Source Source;
     public Token CurrentToken { get; private set; }
 
     protected Scanner(Source source)
     {
-      this.source = source;
+      this.Source = source;
     }
 
     public Token NextToken()
@@ -20,12 +20,12 @@
 
     public char CurrentChar()
     {
-      return source.CurrentChar();
+      return Source.CurrentChar();
     }
 
     public char NextChar()
     {
-      return source.NextChar();
+      return Source.NextChar();
     }
   }
 }

@@ -5,14 +5,14 @@ namespace npascal.frontend
 {
   public abstract class Parser : IMessageProducer
   {
-    protected static ISymbolTable symbolTable;
-    protected readonly Scanner scanner;
-    protected ICode iCode;
-    protected static MessageHandler messageHandler = new MessageHandler();
+    protected static ISymbolTable SymbolTable;
+    protected readonly Scanner Scanner;
+    protected ICode Intermediate;
+    protected static MessageHandler MessageHandler = new MessageHandler();
 
     public Parser(Scanner scanner)
     {
-      this.scanner = scanner;
+      this.Scanner = scanner;
     }
 
     public abstract void Parse();
@@ -21,27 +21,27 @@ namespace npascal.frontend
 
     public Token CurrentToken()
     {
-      return scanner.CurrentToken;
+      return Scanner.CurrentToken;
     }
 
     public Token NextToken()
     {
-      return scanner.NextToken();
+      return Scanner.NextToken();
     }
 
     public void AddMessageListener(IMessageListener listener)
     {
-      throw new System.NotImplementedException();
+      MessageHandler.AddListener(listener);
     }
 
     public void RemoveMessageListener(IMessageListener listener)
     {
-      throw new System.NotImplementedException();
+      MessageHandler.RemoveListener(listener);
     }
 
     public void SendMessage(Message message)
     {
-      throw new System.NotImplementedException();
+      MessageHandler.SendMessage(message);
     }
   }
 }

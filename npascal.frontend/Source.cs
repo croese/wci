@@ -1,93 +1,112 @@
 ﻿using System;
 using System.IO;
+using npascal.message;
 
 namespace npascal.frontend
 {
-  public class Source
+  public class Source : IMessageProducer
   {
-    public const char EOL = '\n';
-    public const char EOF = (char) 0;
+    public const char Eol = '\n';
+    public const char Eof = (char) 0;
 
-    private TextReader reader;
-    private string line;
-    private int lineNumber;
-    private int currentPosition;
+    private readonly TextReader _reader;
+    private string _line;
+    private int _lineNumber;
+    private int _currentPosition;
+
+    private static readonly MessageHandler _messageHandler = new MessageHandler();
 
     public Source(TextReader reader)
     {
-      lineNumber = 0;
-      currentPosition = -2;
-      this.reader = reader;
+      _lineNumber = 0;
+      _currentPosition = -2;
+      this._reader = reader;
     }
 
     public char CurrentChar()
     {
-      if (currentPosition == -2)
+      if (_currentPosition == -2)
       {
         ReadLine();
         return NextChar();
       }
-      else if (line == null)
+      else if (_line == null)
       {
-        return EOF;
+        return Eof;
       }
-      else if (currentPosition == -1 || currentPosition == line.Length)
+      else if (_currentPosition == -1 || _currentPosition == _line.Length)
       {
-        return EOL;
+        return Eol;
       }
-      else if (currentPosition > line.Length)
+      else if (_currentPosition > _line.Length)
       {
         ReadLine();
         return NextChar();
       }
       else
       {
-        return line[currentPosition];
+        return _line[_currentPosition];
       }
     }
 
     public char NextChar()
     {
-      currentPosition++;
+      _currentPosition++;
       return CurrentChar();
     }
 
     public char PeekChar()
     {
       CurrentChar();
-      if (line == null)
+      if (_line == null)
       {
-        return EOF;
+        return Eof;
       }
 
-      var nextPosition = currentPosition + 1;
-      return nextPosition < line.Length ? line[nextPosition] : EOL;
+      var nextPosition = _currentPosition + 1;
+      return nextPosition < _line.Length ? _line[nextPosition] : Eol;
     }
 
     private void ReadLine()
     {
-      line = reader.ReadLine();
-      currentPosition = -1;
+      _line = _reader.ReadLine();
+      _currentPosition = -1;
 
-      if (line != null)
+      if (_line != null)
       {
-        lineNumber++;
+        _lineNumber++;
+        SendMessage(new Message(MessageType.SourceLine, new object[] {_lineNumber, _line}));
       }
     }
 
     public void Close() // TODO: IDisposable?
     {
-      reader?.Close();
+      _reader?.Close();
     }
 
     public int GetLineNumber()
     {
-      return lineNumber;
+      return _lineNumber;
     }
 
     public int GetPosition()
     {
-      return currentPosition;
+      return _currentPosition;
+    }
+
+    public void AddMessageListener(IMessageListener listener)
+    {
+      _messageHandler.AddListener(listener);
+    }
+
+    public void RemoveMessageListener(IMessageListener listener)
+    {
+      _messageHandler.RemoveListener(listener);
+    }
+
+    public void SendMessage(Message message)
+    {
+      _messageHandler.SendMessage(message);
     }
   }
 }
