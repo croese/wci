@@ -8,19 +8,63 @@
 
     protected override Token ExtractToken()
     {
+      SkipWhitespace();
+
       Token token;
       var currentChar = CurrentChar();
 
       if (currentChar == Source.Eof)
       {
-        token = new EofToken(Source);
+        token = new EofToken(Source, EndOfFile);
+      }
+      else if (char.IsLetter(currentChar))
+      {
+        token = new PascalWordToken(Source);
+      }
+      else if (char.IsDigit(currentChar))
+      {
+        token = new PascalNumberToken(Source);
+      }
+      else if (currentChar == '\'')
+      {
+        token = new PascalStringToken(Source);
+      }
+      else if (PascalTokenType.SpecialSymbols.ContainsKey(currentChar.ToString()))
+      {
+        token = new PascalSpecialSymbolToken(Source);
       }
       else
       {
-        token = new Token(Source);
+        token = new PascalErrorToken(Source, InvalidCharacter, currentChar.ToString());
+        NextChar();
       }
 
       return token;
+    }
+
+    private void SkipWhitespace()
+    {
+      var currentChar = CurrentChar();
+
+      while (char.IsWhiteSpace(currentChar) || currentChar == '{')
+      {
+        if (currentChar == '{')
+        {
+          do
+          {
+            currentChar = NextChar();
+          } while (currentChar != '}' && currentChar != Source.Eof);
+
+          if (currentChar == '}')
+          {
+            currentChar = NextChar();
+          }
+        }
+        else
+        {
+          currentChar = NextChar();
+        }
+      }
     }
   }
 }

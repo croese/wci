@@ -17,6 +17,11 @@ namespace npascal.frontend.pascal
   public enum PascalErrorCode
   {
     [ErrorCode("Already specified in FORWARD")] AlreadyForwarded,
+    [ErrorCode("Redefined identifier")] IdentifierRedefined,
+    [ErrorCode("Undefined identifier")] IdentifierUndefined,
+    [ErrorCode("Incompatible assignment")] IncompatibleAssignment,
+    [ErrorCode("Incompatible types")] IncompatibleTypes,
+
     [ErrorCode("Object I/O error", Status = -101)] IOError,
     [ErrorCode("Too many syntax errors", Status = -102)] TooManyErrors
   }

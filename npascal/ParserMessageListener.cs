@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using npascal.frontend;
 using npascal.message;
 
@@ -6,6 +7,8 @@ namespace npascal
 {
   internal class ParserMessageListener : IMessageListener
   {
+    private const int PrefixWidth = 5;
+
     public void MessageReceived(Message message)
     {
       var type = message.Type;
@@ -14,6 +17,7 @@ namespace npascal
       switch (type)
       {
         case MessageType.Token:
+        {
           var line = (int) body[0];
           var position = (int) body[1];
           var tokenType = (ITokenType) body[2];
@@ -32,6 +36,28 @@ namespace npascal
             Console.WriteLine($"          value={value}");
           }
           break;
+        }
+
+        case MessageType.SyntaxError:
+        {
+          var line = (int) body[0];
+          var position = (int) body[1];
+          var tokenText = (string) body[2];
+          var errorMessage = (string) body[3];
+
+          int spaceCount = PrefixWidth + position;
+          var flagBuffer = new StringBuilder(new string(' ', spaceCount));
+          flagBuffer.Append("^\n*** ").Append(errorMessage);
+
+          if (tokenText != null)
+          {
+            flagBuffer.Append(" [at \"").Append(tokenText).Append("\"]");
+          }
+
+          Console.WriteLine(flagBuffer.ToString());
+          break;
+        }
+
 
         case MessageType.ParserSummary:
           var statementCount = (int) body[0];
