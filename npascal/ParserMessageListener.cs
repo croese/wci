@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using npascal.frontend;
+using npascal.frontend.pascal;
 using npascal.message;
 
 namespace npascal
@@ -29,7 +30,7 @@ namespace npascal
 
           if (value != null)
           {
-            if (tokenType == STRING)
+            if (tokenType == PascalTokens.TokenTypes[PascalTokenType.String])
             {
               value = $"\"{value}\"";
             }

@@ -6,7 +6,7 @@
       string tokenText) : base(source)
     {
       Text = tokenText;
-      Type = ERROR;
+      Type = PascalTokens.TokenTypes[PascalTokenType.Error];
       Value = errorCode;
     }
 

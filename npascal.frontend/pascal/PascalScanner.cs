@@ -1,4 +1,6 @@
-﻿namespace npascal.frontend.pascal
+﻿using System;
+
+namespace npascal.frontend.pascal
 {
   public class PascalScanner : Scanner
   {
@@ -10,34 +12,34 @@
     {
       SkipWhitespace();
 
-      Token token;
+      Token token = new EofToken(Source);
       var currentChar = CurrentChar();
 
       if (currentChar == Source.Eof)
       {
-        token = new EofToken(Source, EndOfFile);
+        token = new EofToken(Source);
       }
       else if (char.IsLetter(currentChar))
       {
         token = new PascalWordToken(Source);
       }
-      else if (char.IsDigit(currentChar))
-      {
-        token = new PascalNumberToken(Source);
-      }
+//      else if (char.IsDigit(currentChar))
+//      {
+//        token = new PascalNumberToken(Source);
+//      }
       else if (currentChar == '\'')
       {
         token = new PascalStringToken(Source);
       }
-      else if (PascalTokenType.SpecialSymbols.ContainsKey(currentChar.ToString()))
-      {
-        token = new PascalSpecialSymbolToken(Source);
-      }
-      else
-      {
-        token = new PascalErrorToken(Source, InvalidCharacter, currentChar.ToString());
-        NextChar();
-      }
+//      else if (PascalTokenType.SpecialSymbols.ContainsKey(currentChar.ToString()))
+//      {
+//        token = new PascalSpecialSymbolToken(Source);
+//      }
+//      else
+//      {
+//        token = new PascalErrorToken(Source, InvalidCharacter, currentChar.ToString());
+//        NextChar();
+//      }
 
       return token;
     }

@@ -23,7 +23,7 @@ namespace npascal.frontend.pascal
         {
           var type = token.Type;
 
-          if (type != ERROR)
+          if (type != PascalTokens.TokenTypes[PascalTokenType.Error])
           {
             SendMessage(new Message(MessageType.Token,
               new object[]
@@ -51,7 +51,7 @@ namespace npascal.frontend.pascal
           elapsedTime
         }));
       }
-      catch (IOException e)
+      catch (IOException)
       {
         ErrorHandler.AbortTranslation(PascalErrorCode.IOError, this);
       }

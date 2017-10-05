@@ -11,7 +11,7 @@
 
     public Token(Source source)
     {
-      this.Source = source;
+      Source = source;
       LineNumber = source.GetLineNumber();
       Position = source.GetPosition();
 

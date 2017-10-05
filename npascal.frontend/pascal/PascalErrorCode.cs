@@ -21,6 +21,7 @@ namespace npascal.frontend.pascal
     [ErrorCode("Undefined identifier")] IdentifierUndefined,
     [ErrorCode("Incompatible assignment")] IncompatibleAssignment,
     [ErrorCode("Incompatible types")] IncompatibleTypes,
+    [ErrorCode("Unexpected end of file")] UnexpectedEof,
 
     [ErrorCode("Object I/O error", Status = -101)] IOError,
     [ErrorCode("Too many syntax errors", Status = -102)] TooManyErrors
